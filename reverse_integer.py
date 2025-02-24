@@ -19,7 +19,7 @@ class Solution:
 
             # Before I add the digit to the result, let's just make sure the
             # result is still within the constraints. All these next two
-            # if statements is check if result is overflowing past the constraints
+            # if statements do is check if result is overflowing past the constraints
             # of the 32 bit integer.
             
             # If result is greater than MAX (from its tens to final place since
@@ -28,7 +28,7 @@ class Solution:
             # result's ones place (the current digit that we are adding) is
             # greater than MAX's ones place (7). Then we return zero.
             if (res > MAX // 10 or 
-                (res == MAX // 10 and digit >= MAX % 10)):
+                (res == MAX // 10 and digit > MAX % 10)):
                 return 0
 
             # Now, if result is less than MINs rest of digits (-214748364)
@@ -36,7 +36,7 @@ class Solution:
             # and current digit is more negative than MIN's ones place (-8), we return
             # zero
             if (res < MIN // 10 or 
-                (res == MIN // 10 and digit <= MIN % 10)):
+                (res == MIN // 10 and digit < MIN % 10)):
                 return 0
             
             # Now, let's shift the digits already in result by multiplying result by
