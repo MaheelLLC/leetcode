@@ -30,3 +30,23 @@ class Solution:
                 curr = curr.next
         # return the head of the updated list
         return head
+    
+        # neetcode solution
+        dummy = ListNode(next=head)
+        prev, curr = dummy, head
+
+        while curr:
+            # grab the next node
+            nxt = curr.next
+            # if current needs to be removed
+            if curr.val == val:
+                # set its previous node's next to the stored next node
+                prev.next = nxt
+            # we shouldn't remove current
+            else:
+                # shift the previous node
+                prev = curr
+            # regardless we have to move current
+            curr = nxt
+        # the head is located right after dummy
+        return dummy.next
